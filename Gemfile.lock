@@ -1,0 +1,20 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    redcarpet (3.6.1)
+    thread_safe (0.3.6)
+    tzinfo (1.2.11)
+      thread_safe (~> 0.1)
+    tzinfo-data (1.2025.3)
+      tzinfo (>= 1.0.0)
+
+PLATFORMS
+  x64-mingw-ucrt
+
+DEPENDENCIES
+  redcarpet (~> 3.3, >= 3.3.4)
+  tzinfo (~> 1.2, >= 1.2.2)
+  tzinfo-data
+
+BUNDLED WITH
+   2.5.16
