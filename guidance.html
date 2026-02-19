@@ -1,0 +1,118 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,700;1,400;1,700&family=M+PLUS+1+Code:wght@100..700&family=Pridi:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="STYLESHEET" href="style.css">
+    <title>codegolf: Guidance</title>
+    <style>
+    h2 {
+        border-bottom: 1px solid;
+    }
+    </style>
+</head>
+<body>
+<header>
+    <h1><a href="/">codegolf</a></h1>
+</header>
+<h1>Recommended defaults</h1>
+<p>These rules apply unless otherwise stated (e.g., if a challenge stated &ldquo;output may not have trailing newlines&rdquo;). I use the terms <em>must</em>, <em>must not</em>, <em>should</em>, <em>should not</em>, <em>may</em>, etc. consistent with <a href="https://www.rfc-editor.org/rfc/rfc2119.html" target="_blank">RFC 2119</a>.</p>
+
+<p>At the end of the day, do what you want with these problems, but this is my <em>recommended</em> golfing experience.</p>
+
+<h2>General guidelines</h2>
+<ul>
+    <li>A <dfn id="def-solution">solution</dfn> must either be <em>must</em> either be a <a href="#full_program">full program</a>, or a <a href="#function">function</a>.</li>
+    <li>A <dfn id="full_program">full program</dfn> is a piece of code, usually a file, that can be provided to a programming language implementation wholesale. See <a href="#full_program_guidance">full program guidance</a> for more information.</li>
+    <li>A <dfn id="function">function</dfn> is a snippet of code, usually surrounded by helper code to invoke it, that can be called with the appropriate arguments and produce or return the appropriate output. See <a href="#function_guidance">function guidance</a> for more information.</li>
+    <li>Solutions <em>may</em> reasonably ignore language and hardware limitations, such as memory and the recursion limit, so long as all listed test cases execute without issue.</li>
+    <li>Solutions <em>should</em> complete under 60 seconds on normal hardware.</li>
+</ul>
+
+<h3 id="full_program_guidance">Full program guidance</h3>
+<ul>
+    <li>
+        Input <em>must</em> be from STDIN or the screen unless otherwise stated. This includes (but is not limited to):
+        <ul>
+            <li>Reading from file descriptor <code>0</code> (STDIN).</li>
+            <li>Reading from <code>/dev/tty</code>.</li>
+        </ul>
+        Importantly, solutions <em>must not</em> assume input is pre-loaded in a variable, memory, a file, etc.
+    </li>
+    <li>
+        Output <em>must</em> be to STDOUT or the screen unless otherwise stated. This includes (but is not limited to):
+        <ul>
+            <li>Writing to file descriptor <code>1</code> (STDOUT).</li>
+            <li>Writing to <code>/dev/tty</code> (or equivalent).</li>
+            <li>Writing to a GUI element (e.g., <code>document.body.textContent</code>).</li>
+            <li>Writing to a GUI popup (e.g., <code>alert</code>). The popup <em>should</em> be somewhat persistent, e.g., avoid flashing a popup with output.</li>
+        </ul>
+        Importantly, solutions <em>must not</em> simply calculate the result without displaying it in some way.
+    </li>
+    <li>Command line and/or interpreter flags <em>may</em> be used, but are discouraged because they are <em class="silly">stinky</em> and <em class="silly">dumb</em> (technical terms).</li>
+    <li>When comparing solutions, I <em>recommend</em> that you consider a solution without flags, or with different or fewer flags, as not directly competing with other solutions, even if the base language is the same.</li>
+</ul>
+
+<h3 id="function_guidance">Function guidance</h3>
+<ul>
+    <li>Functions <em>should</em> take the appropriate input(s) (if any) through function parameters.</li>
+    <li>Functions <em>should</em> use a return value to provide output.</li>
+    <li>Functions <em>may</em> adhere to <a href="#full_program_guidance">full program rules</a> for input and/or output.</li>
+</ul>
+
+<h2>Category specific guidelines</h2>
+<h3><dfn id="def-string.i" class="category">string.i</dfn> <dfn id="def-string.o" class="category">string.o</dfn> string input and output</h3>
+<ul>
+    <li>
+        Strings <em>may</em> be represented using any of the following:
+        <ul>
+            <li>An internal string type;</li>
+            <li>A list or array of characters or single-character strings; or,</li>
+            <li>A list or array of bytes in a reasonable encoding corresponding to the input/output.</li>
+        </ul>
+    </li>
+    <li>Where line breaks (except bytes which happen to be e.g. 0x0A) are I/O, solutions <em>may</em> consistently choose to use <code>\n</code>, <code>\r</code>, or <code>\r\n</code>, or instead provide output as a list of single-line strings.</li>
+    <li>Output (<strong>only</strong>) <em>may</em> have any number of leading and trailing newlines.</li>
+    <li>Each line of output (<strong>only</strong>) <em>may</em> have any number of (consistent) leading and trailing spaces (such that trimming a consistent number of spaces from the start and end of each line, which may differ, results in the requested output).</li>
+</ul>
+
+<h3><dfn id="def-numeric.i" class="category">numeric.i</dfn> <dfn id="def-numeric.o" class="category">numeric.o</dfn> numeric input and output</h3>
+<ul>
+    <li>Where floating point numbers are I/O, results <em>must</em> be accurate to 5 decimal digits after the decimal point.</li>
+    <li>Solutions <em>may</em> represent floating point numbers instead as fractions (either exactly accurate, or accurate to 5 decimal digits after the decimal point, as above.</li>
+    <li>
+        Solutions <em>may</em> represent fractions using any of the following:
+        <ul>
+            <li>An internal fraction type;</li>
+            <li>A dedicated struct with numerator and denominator members;</li>
+            <li>An ordered array, list, or tuple with numerator and denominator components; or,</li>
+            <li>A complex number with real and imaginary parts corresponding to numerator and denominator (in any consistent order).</li>
+        </ul>
+    </li>
+    <li>Where the output is limited to a single integer from 0 to 255, a solution <em>may</em> provide output via exit code.</li>
+</ul>
+
+<h3><dfn id="def-boolean.i" class="category">boolean.i</dfn> <dfn id="def-boolean.o" class="category">boolean.o</dfn> boolean input and output</h3>
+<ul>
+    <li>Solutions <em>may</em> <strong>always</strong> substitute the concepts of <code>true</code> and <code>false</code> with the concepts of truthy and falsy. (E.g., <code>truthy = value ? true : false;</code>.)</li>
+    <li>Solutions <em>may</em> <strong>always</strong> decide to consistently invert its output (i.e., give <code>true</code> for <code>false</code> and <code>false</code> for <code>true</code>).</li>
+    <li>Solutions <em>may</em> provide boolean output via exit code (i.e., <code>0</code> for <code>true</code> and anything else for <code>false</code>, or vice versa).</li>
+    <li>Similarly, solutions <em>may</em> terminate cleanly for <code>true</code> and terminate with an error for <code>false</code> (or vice versa).</li>
+    <li>Solutions <em>may</em> terminate for <code>true</code> and never terminate for <code>false</code> (or vice versa).</li>
+</ul>
+
+<h3><dfn id="def-sequence.o" class="category">sequence.o</dfn> sequence output</h3>
+<ul>
+    <li>
+        Solutions <em>may</em> <strong>always</strong> decide to implement a sequence as either:
+        <ol>
+            <li>An (indefinite, if applicable) iterator (including (indefinite) STDOUT or screen output);</li>
+            <li>Requiring an index as input (starting, consistently, at <code>0</code> or <code>1</code>), and outputing the entry in the sequence at that index; or,</li>
+            <li>Requiring an integer <var>N</var> and outputing the first <var>N</var> members of the sequence.</li>
+        </ol>
+    </li>
+</ul>
+</body>
+</html>
