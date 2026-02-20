@@ -4,31 +4,38 @@
     <meta charset="UTF-8">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,700;1,400;1,700&family=M+PLUS+1+Code:wght@100..700&family=Pridi:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Pridi:wght@400;500&display=swap" rel="stylesheet">
     <link rel="STYLESHEET" href="./../style.css">
-    <title>codegolf: G00002</title>
+    <title>G00002 - codegolf</title>
 </head>
 <body>
 <header>
-    <h1><a href="/">codegolf</a></h1>
+    <h1><a href="./../">codegolf</a></h1>
 </header>
 <h1>G00002: Pangrammatic Window Shopping</h1>
 <h2><span class="category">string.i</span> <span class="category">numeric.o</span></h2>
-<h1>!! UNDER CONSTRUCTION !!</h1>
+<p>Given a string <em>S</em> consisting only of lowercase letters <code>a</code> through <code>z</code> and spaces (or a list of words), find the <em>number of letters</em> in the shortest <a href="https://en.wikipedia.org/wiki/Pangrammatic_window">pangrammatic window</a> in <em>S</em>, that is, the size of the span of letters containing all 26 letters of the alphabet with the fewest letters.</p>
 
-<p>Given a string <em>S</em> consisting only of lowercase letters <code>a</code> through <code>z</code> and spaces (or a list of words), find the <em>size</em> of the shortest <a href="https://en.wikipedia.org/wiki/Pangrammatic_window">pangrammatic window</a> in <em>S</em>, that is, the shortest stretch.</p>
-
-<h2>Worked Example</h2>
-
-<p>In the text</p>
-
-<pre><code>asdf
-</code></pre>
-TODO: []
-<p><em><a href="./../FAQ#par">Par:</a></em> <em>Nothing here, yet&hellip;</em></p>
+<p>You should output <code>0</code> if no such window exists in the input.</p>
+<h2>Test Cases</h2>
+<pre><samp>&quot;&quot; → 0
+&quot;not yet&quot; → 0
+&quot;bcdefghijklmnopqrstuvwxyz&quot; → 0
+&quot;abcdefghijklmnopqrstuvwxyz&quot; → 26
+&quot;rnhduotgmbeizwsfkyqapvcjlx&quot; → 26
+&quot;the quick brown fox jumps over the lazy dog&quot; → 32
+&quot;a quizzical romantic night with experts through the hills and valleys just feels bleaker and queerer than before&quot; → 72</samp></pre><h2>Test Cases (alternative)</h2>
+<pre><samp>[] → 0
+[&quot;n&quot;, &quot;o&quot;, &quot;t&quot;, &quot; &quot;, &quot;y&quot;, &quot;e&quot;, &quot;t&quot;] → 0
+[&quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;f&quot;, &quot;g&quot;, &quot;h&quot;, &quot;i&quot;, &quot;j&quot;, &quot;k&quot;, &quot;l&quot;, &quot;m&quot;, &quot;n&quot;, &quot;o&quot;, &quot;p&quot;, &quot;q&quot;, &quot;r&quot;, &quot;s&quot;, &quot;t&quot;, &quot;u&quot;, &quot;v&quot;, &quot;w&quot;, &quot;x&quot;, &quot;y&quot;, &quot;z&quot;] → 0
+[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;f&quot;, &quot;g&quot;, &quot;h&quot;, &quot;i&quot;, &quot;j&quot;, &quot;k&quot;, &quot;l&quot;, &quot;m&quot;, &quot;n&quot;, &quot;o&quot;, &quot;p&quot;, &quot;q&quot;, &quot;r&quot;, &quot;s&quot;, &quot;t&quot;, &quot;u&quot;, &quot;v&quot;, &quot;w&quot;, &quot;x&quot;, &quot;y&quot;, &quot;z&quot;] → 26
+[&quot;r&quot;, &quot;n&quot;, &quot;h&quot;, &quot;d&quot;, &quot;u&quot;, &quot;o&quot;, &quot;t&quot;, &quot;g&quot;, &quot;m&quot;, &quot;b&quot;, &quot;e&quot;, &quot;i&quot;, &quot;z&quot;, &quot;w&quot;, &quot;s&quot;, &quot;f&quot;, &quot;k&quot;, &quot;y&quot;, &quot;q&quot;, &quot;a&quot;, &quot;p&quot;, &quot;v&quot;, &quot;c&quot;, &quot;j&quot;, &quot;l&quot;, &quot;x&quot;] → 26
+[&quot;t&quot;, &quot;h&quot;, &quot;e&quot;, &quot; &quot;, &quot;q&quot;, &quot;u&quot;, &quot;i&quot;, &quot;c&quot;, &quot;k&quot;, &quot; &quot;, &quot;b&quot;, &quot;r&quot;, &quot;o&quot;, &quot;w&quot;, &quot;n&quot;, &quot; &quot;, &quot;f&quot;, &quot;o&quot;, &quot;x&quot;, &quot; &quot;, &quot;j&quot;, &quot;u&quot;, &quot;m&quot;, &quot;p&quot;, &quot;s&quot;, &quot; &quot;, &quot;o&quot;, &quot;v&quot;, &quot;e&quot;, &quot;r&quot;, &quot; &quot;, &quot;t&quot;, &quot;h&quot;, &quot;e&quot;, &quot; &quot;, &quot;l&quot;, &quot;a&quot;, &quot;z&quot;, &quot;y&quot;, &quot; &quot;, &quot;d&quot;, &quot;o&quot;, &quot;g&quot;] → 32
+[&quot;a&quot;, &quot; &quot;, &quot;q&quot;, &quot;u&quot;, &quot;i&quot;, &quot;z&quot;, &quot;z&quot;, &quot;i&quot;, &quot;c&quot;, &quot;a&quot;, &quot;l&quot;, &quot; &quot;, &quot;r&quot;, &quot;o&quot;, &quot;m&quot;, &quot;a&quot;, &quot;n&quot;, &quot;t&quot;, &quot;i&quot;, &quot;c&quot;, &quot; &quot;, &quot;n&quot;, &quot;i&quot;, &quot;g&quot;, &quot;h&quot;, &quot;t&quot;, &quot; &quot;, &quot;w&quot;, &quot;i&quot;, &quot;t&quot;, &quot;h&quot;, &quot; &quot;, &quot;e&quot;, &quot;x&quot;, &quot;p&quot;, &quot;e&quot;, &quot;r&quot;, &quot;t&quot;, &quot;s&quot;, &quot; &quot;, &quot;t&quot;, &quot;h&quot;, &quot;r&quot;, &quot;o&quot;, &quot;u&quot;, &quot;g&quot;, &quot;h&quot;, &quot; &quot;, &quot;t&quot;, &quot;h&quot;, &quot;e&quot;, &quot; &quot;, &quot;h&quot;, &quot;i&quot;, &quot;l&quot;, &quot;l&quot;, &quot;s&quot;, &quot; &quot;, &quot;a&quot;, &quot;n&quot;, &quot;d&quot;, &quot; &quot;, &quot;v&quot;, &quot;a&quot;, &quot;l&quot;, &quot;l&quot;, &quot;e&quot;, &quot;y&quot;, &quot;s&quot;, &quot; &quot;, &quot;j&quot;, &quot;u&quot;, &quot;s&quot;, &quot;t&quot;, &quot; &quot;, &quot;f&quot;, &quot;e&quot;, &quot;e&quot;, &quot;l&quot;, &quot;s&quot;, &quot; &quot;, &quot;b&quot;, &quot;l&quot;, &quot;e&quot;, &quot;a&quot;, &quot;k&quot;, &quot;e&quot;, &quot;r&quot;, &quot; &quot;, &quot;a&quot;, &quot;n&quot;, &quot;d&quot;, &quot; &quot;, &quot;q&quot;, &quot;u&quot;, &quot;e&quot;, &quot;e&quot;, &quot;r&quot;, &quot;e&quot;, &quot;r&quot;, &quot; &quot;, &quot;t&quot;, &quot;h&quot;, &quot;a&quot;, &quot;n&quot;, &quot; &quot;, &quot;b&quot;, &quot;e&quot;, &quot;f&quot;, &quot;o&quot;, &quot;r&quot;, &quot;e&quot;] → 72</samp></pre><p>(this will look better eventually, I promise)
+<p><em><a href="./../FAQ#par">Par:</a></em> Ruby, 120b</p>
 <footer>
     <p>Made by <a href="https://conorobrien-foxx.github.io/" target="_blank">Conor O'Brien</a>.</p>
-    <p>Built at 2026-02-18 23:11:53 -0500 EST.</p>
+    <p>Built at 2026-02-19 22:45:40 -0500 EST.</p>
 </footer>
 </body>
 </html>

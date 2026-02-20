@@ -13,7 +13,7 @@ p {
     line-height: 1.3em;
 }
 samp, code, pre, em.silly, .category {
-    font-family: "M PLUS 1 Code", monospace;
+    font-family: "Google Sans Code", monospace;
     font-optical-sizing: auto;
 }
 em.silly, dfn.category {
@@ -31,4 +31,5 @@ samp, code {
 }
 pre > samp, pre > code {
     display: block;
+    white-space: pre-wrap;
 }

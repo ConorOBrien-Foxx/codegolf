@@ -17,3 +17,7 @@ Challenge text
 ```
 
 The build folder also contains some HTML templates.
+
+## contributing
+
+If you want to feature a challenge that ***you wrote*** and can release under GPLv3.0, please feel free to make a pull request. Please, only one challenge per pull request, and name your file GXXXXX.md, rather than giving it an ID yourself. I will assign the ID before accepting your pull request.
