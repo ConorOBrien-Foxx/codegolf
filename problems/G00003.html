@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Pridi:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="STYLESHEET" href="./../style.css">
+    <title>G00003 - codegolf</title>
+</head>
+<body>
+<header>
+    <h1><a href="./../">codegolf</a></h1>
+</header>
+<h1>G00003: Ripple Diamond</h1>
+<h2><span class="category">numeric.i<sub>2</sub></span> <span class="category">string.o</span> <span class="category">art</span></h2>
+<p>Given a positive integer <em>N</em> and a non-negative integer <em>K</em>, generate a series of <em>N</em> concentric diamonds with gaps of <em>K</em> spaces on the interior of each.</p>
+<h2>Test Cases</h2>
+<pre><samp>[1, 0] →
+/\
+\/
+[1, 1] →
+ /\ 
+/  \
+\  /
+ \/ 
+[1, 2] →
+  /\  
+ /  \ 
+/    \
+\    /
+ \  / 
+  \/  
+[2, 0] →
+ /\ 
+//\\
+\\//
+ \/ 
+[2, 1] →
+   /\   
+  /  \  
+ / /\ \ 
+/ /  \ \
+\ \  / /
+ \ \/ / 
+  \  /  
+   \/   
+[2, 2] →
+     /\     
+    /  \    
+   /    \   
+  /  /\  \  
+ /  /  \  \ 
+/  /    \  \
+\  \    /  /
+ \  \  /  / 
+  \  \/  /  
+   \    /   
+    \  /    
+     \/     
+[3, 0] →
+  /\  
+ //\\ 
+///\\\
+\\\///
+ \\// 
+  \/  
+[3, 1] →
+     /\     
+    /  \    
+   / /\ \   
+  / /  \ \  
+ / / /\ \ \ 
+/ / /  \ \ \
+\ \ \  / / /
+ \ \ \/ / / 
+  \ \  / /  
+   \ \/ /   
+    \  /    
+     \/     
+[5, 5] →
+                             /\                             
+                            /  \                            
+                           /    \                           
+                          /      \                          
+                         /        \                         
+                        /          \                        
+                       /     /\     \                       
+                      /     /  \     \                      
+                     /     /    \     \                     
+                    /     /      \     \                    
+                   /     /        \     \                   
+                  /     /          \     \                  
+                 /     /     /\     \     \                 
+                /     /     /  \     \     \                
+               /     /     /    \     \     \               
+              /     /     /      \     \     \              
+             /     /     /        \     \     \             
+            /     /     /          \     \     \            
+           /     /     /     /\     \     \     \           
+          /     /     /     /  \     \     \     \          
+         /     /     /     /    \     \     \     \         
+        /     /     /     /      \     \     \     \        
+       /     /     /     /        \     \     \     \       
+      /     /     /     /          \     \     \     \      
+     /     /     /     /     /\     \     \     \     \     
+    /     /     /     /     /  \     \     \     \     \    
+   /     /     /     /     /    \     \     \     \     \   
+  /     /     /     /     /      \     \     \     \     \  
+ /     /     /     /     /        \     \     \     \     \ 
+/     /     /     /     /          \     \     \     \     \
+\     \     \     \     \          /     /     /     /     /
+ \     \     \     \     \        /     /     /     /     / 
+  \     \     \     \     \      /     /     /     /     /  
+   \     \     \     \     \    /     /     /     /     /   
+    \     \     \     \     \  /     /     /     /     /    
+     \     \     \     \     \/     /     /     /     /     
+      \     \     \     \          /     /     /     /      
+       \     \     \     \        /     /     /     /       
+        \     \     \     \      /     /     /     /        
+         \     \     \     \    /     /     /     /         
+          \     \     \     \  /     /     /     /          
+           \     \     \     \/     /     /     /           
+            \     \     \          /     /     /            
+             \     \     \        /     /     /             
+              \     \     \      /     /     /              
+               \     \     \    /     /     /               
+                \     \     \  /     /     /                
+                 \     \     \/     /     /                 
+                  \     \          /     /                  
+                   \     \        /     /                   
+                    \     \      /     /                    
+                     \     \    /     /                     
+                      \     \  /     /                      
+                       \     \/     /                       
+                        \          /                        
+                         \        /                         
+                          \      /                          
+                           \    /                           
+                            \  /                            
+                             \/                             </pre></samp>
+<p><em><a href="./../FAQ#par">Par:</a></em> J, 63b &bull; Ruby, 126b</p>
+<footer>
+    <p>Made by <a href="https://conorobrien-foxx.github.io/" target="_blank">Conor O'Brien</a>.</p>
+    <p>Built at 2026-02-28 23:02:51 -0500 EST.</p>
+</footer>
+</body>
+</html>

@@ -6,7 +6,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,700;1,400;1,700&family=M+PLUS+1+Code:wght@100..700&family=Pridi:wght@400;500&display=swap" rel="stylesheet">
     <link rel="STYLESHEET" href="style.css">
-    <title>codegolf: guidelines</title>
+    <title>guidelines - codegolf</title>
     <style>
     h2 {
         border-bottom: 1px solid;
@@ -24,9 +24,14 @@
 
 <h2>General guidelines</h2>
 <ul>
-    <li>A <dfn id="def-solution">solution</dfn> must either be <em>must</em> either be a <a href="#full_program">full program</a>, or a <a href="#function">function</a>.</li>
-    <li>A <dfn id="full_program">full program</dfn> is a piece of code, usually a file, that can be provided to a programming language implementation wholesale. See <a href="#full_program_guidance">full program guidance</a> for more information.</li>
-    <li>A <dfn id="function">function</dfn> is a snippet of code, usually surrounded by helper code to invoke it, that can be called with the appropriate arguments and produce or return the appropriate output. See <a href="#function_guidance">function guidance</a> for more information.</li>
+    <li>
+        A <dfn id="def-solution">solution</dfn> must either be <em>must</em> either be a <a href="#full_program">full program</a>, or a <a href="#function">function</a>.
+        <ul>
+            <li>A <dfn id="full_program">full program</dfn> is a piece of code, usually a file, that can be provided to a programming language implementation wholesale. See <a href="#full_program_guidance">full program guidance</a> for more information.</li>
+            <li>A <dfn id="function">function</dfn> is a snippet of code, usually surrounded by helper code to invoke it, that can be called with the appropriate arguments and produce or return the appropriate output. See <a href="#function_guidance">function guidance</a> for more information.</li>
+        </ul>
+    </li>
+    <li>Where problems require multiple, separate inputs, solutions <em>may</em> <strong>always</strong> receive them in a consistent order they choose.</li>
     <li>Solutions <em>may</em> reasonably ignore language and hardware limitations, such as memory and the recursion limit, so long as all listed test cases execute without issue.</li>
     <li>Solutions <em>should</em> complete under 60 seconds on normal hardware.</li>
     <li>Solutions <em>must</em> work for more than just a limited subset of possible inputs (e.g., they <em>must</em> work for more than just the provided test cases).</li>
@@ -75,8 +80,9 @@
         </ul>
     </li>
     <li>Where line breaks (except bytes which happen to be e.g. 0x0A) are I/O, solutions <em>may</em> consistently choose to use <code>\n</code>, <code>\r</code>, or <code>\r\n</code>, or instead provide output as a list of single-line strings.</li>
-    <li>Output (<strong>only</strong>) <em>may</em> have any number of leading and trailing newlines.</li>
-    <li>Each line of output (<strong>only</strong>) <em>may</em> have any number of (consistent) leading and trailing spaces (such that trimming a consistent number of spaces from the start and end of each line, which may differ, results in the requested output).</li>
+    <li>Output (<strong>not</strong> input) <em>may</em> have any number of leading and trailing newlines.</li>
+    <li>Each line of output (<strong>not</strong> input) <em>may</em> have any number of (consistent) leading spaces (such that trimming a consistent number of spaces from the start of each line, which may differ, results in the requested output).</li>
+    <li>Each line of output (<strong>not</strong> input) <em>may</em> have any amount of trailing spaces, even if not consistent, <em>including</em> where problems specify trailing whitespace (and do not specifically ask solutions to replicate it).</li>
 </ul>
 
 <h3><dfn id="def-numeric.i" class="category">numeric.i</dfn> <dfn id="def-numeric.o" class="category">numeric.o</dfn> numeric input and output</h3>

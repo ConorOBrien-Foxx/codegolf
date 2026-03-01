@@ -29,23 +29,65 @@ def digest(text)
 end
 
 module Tags
+    Art = "art"
     NoInput = "no.i"
     StringInput = "string.i"
     StringOutput = "string.o"
     BooleanInput = "boolean.i"
     BooleanOutput = "string.o"
+    
+    def self::has_tag?(list, tag)
+        list.map { |e| e.sub(/\[\d+\]$/, "") }.include? tag
+    end
 end
 
+$FORMAT_PARSE = /^(?<tag>.+?)(?:\[(?<subscript>\d+)\])?$/
+def format_tag(tag)
+    match = tag.match $FORMAT_PARSE
+    if match[:subscript]
+        "<span class=\"category\">#{CGI::escapeHTML match[:tag]}<sub>#{CGI::escapeHTML match[:subscript]}</sub></span>"
+    else
+        "<span class=\"category\">#{CGI::escapeHTML match[:tag]}</span>"
+    end
+end
+
+CaseFormat = Struct.new(:name, :cases) {
+    def header
+        name ? "Test Cases: (#{CGI::escapeHTML name})" : "Test Cases"
+    end
+    
+    def body(tags)
+        if Tags::has_tag? tags, Tags::Art
+            cases.map { |i, o|
+                "#{CGI::escapeHTML i.inspect} →\n#{CGI::escapeHTML o}"
+            }.join "\n"
+        else
+            cases.map { |i, o|
+                "#{CGI::escapeHTML i.inspect} → #{CGI::escapeHTML o.inspect}"
+            }.join "\n"
+        end
+    end
+}
 def format_test_cases(test_cases, tags)
     # TODO: saner
     # TODO: toggle between copy-pastable test cases
-    alt = test_cases.map { |i, o| [i.chars, o] }
-    t1 = test_cases.map { |i, o|
-        "#{CGI::escapeHTML i.inspect} → #{CGI::escapeHTML o.inspect}"
-    }.join "\n"
-    t2 = alt.map { |i, o|
-        "#{CGI::escapeHTML i.inspect} → #{CGI::escapeHTML o.inspect}"
-    }.join "\n"
+    cases = [
+        CaseFormat.new(name: nil, cases: test_cases)
+    ]
+    
+    if Tags::has_tag? tags, Tags::StringInput
+        cases << CaseFormat.new(
+            name: "Characters",
+            cases: test_cases.map { |i, o| [i.chars, o] }
+        )
+    end
+    
+    formatted_cases = cases.map { |cf|
+        "<h2>#{cf.header}</h2>\n<pre><samp>#{cf.body(tags)}</pre></samp>"
+    }
+    
+    return formatted_cases.join "\n"
+    
     return "<h2>Test Cases</h2>\n<pre><samp>#{t1}</samp></pre><h2>Test Cases (alternative)</h2>\n<pre><samp>#{t2}</samp></pre><p>(this will look better eventually, I promise)"
 end
 
@@ -98,7 +140,7 @@ Dir["build/*.md"].sort.each { |path|
         raise "Missing #{prop} in #{path}'s front matter" unless front_matter.has_key? prop
     }
     
-    tags = front_matter["tags"].map { |tag| "<span class=\"category\">#{tag}</span>" }.join(" ")
+    tags = front_matter["tags"].map { |tag| format_tag tag }.join(" ")
     row = {
         id: id,
         name: front_matter["name"],
@@ -113,7 +155,7 @@ Dir["build/*.md"].sort.each { |path|
     
     html_fragment = MARKDOWN.render body
     
-    if front_matter["tags"].include? Tags::NoInput
+    if Tags::has_tag? front_matter["tags"], Tags::NoInput
         html_fragment += "<pre class=\"fixed-output\"><samp>#{CGI::escapeHTML front_matter["output"]}</pre></samp>"
     else
         html_fragment += format_test_cases front_matter["cases"], front_matter["tags"]
